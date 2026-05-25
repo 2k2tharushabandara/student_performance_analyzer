@@ -25,6 +25,17 @@ def _get_classes(model, probs):
         return model.classes_
     return [str(i) for i in range(len(probs))]
 
+
+@app.route("/")
+def index():
+    return jsonify({
+        "status": "ok",
+        "message": "Student performance classifier API is running.",
+        "endpoints": {
+            "predict": "/predict"
+        }
+    })
+
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
@@ -45,4 +56,6 @@ def predict():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    host = "0.0.0.0"
+    port = int(os.environ.get("PORT", 7860))
+    app.run(host=host, port=port, debug=False)
