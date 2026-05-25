@@ -4,3 +4,7 @@ numpy<2
 scikit-learn==1.6.1
 imbalanced-learn
 joblib
+lightgbm
+xgboost
+matplotlib
+seaborn
